@@ -12,8 +12,8 @@ public class KucnaHemija extends Artikal {
 	}
 
 	public void setDatum(LocalDate datum) {
-		if(datum.isAfter(LocalDate.now()))
-			throw new IllegalArgumentException("Datum isteka atrikla ne moze biti datum u buducnosti.");
+		if(datum.isBefore(LocalDate.now()))
+			throw new IllegalArgumentException("Datum isteka atrikla ne moze biti datum u proslosti.");
 		this.datum = datum;
 	}
 
