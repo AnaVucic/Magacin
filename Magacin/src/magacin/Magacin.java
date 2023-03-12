@@ -8,7 +8,7 @@ import interfejs.MagacinInterfejs;
 
 public class Magacin implements MagacinInterfejs {
 	
-	List<Artikal> artikli = new ArrayList<Artikal>();
+	private List<Artikal> artikli = new ArrayList<Artikal>();
 
 	@Override
 	public void dodajAtrikal(Artikal artikal) {
@@ -19,18 +19,25 @@ public class Magacin implements MagacinInterfejs {
 				throw new IllegalArgumentException("Dva artikla ne smeju imati isti naziv");
 		}
 		artikli.add(artikal);
-		
+		if (artikli.contains(artikal))
+			throw new IllegalArgumentException("Duplikat artikla ne moze biti ubacen");
+		artikli.add(artikal);
 	}
 
 	@Override
 	public void izbaciArtikal(Artikal artikal) {
-		// TODO Auto-generated method stub
+		artikli.remove(artikal);
 		
 	}
 
 	@Override
 	public Artikal pronadjiArtikal(int sifra) {
-		// TODO Auto-generated method stub
+		if(sifra < 0)
+			throw new IllegalArgumentException("Sifra za pronalazenje artikla ne moze biti negativna vrednost");
+		for(Artikal a: artikli) {
+			if(a.getSifra() == sifra)
+				return a;
+		}
 		return null;
 	}
 
