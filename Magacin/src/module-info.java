@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author ANA
+ *
+ */
+module Magacin {
+}
