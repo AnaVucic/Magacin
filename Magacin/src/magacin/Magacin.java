@@ -18,7 +18,6 @@ public class Magacin implements MagacinInterfejs {
 			if(a.getNaziv().equals(artikal.getNaziv()))
 				throw new IllegalArgumentException("Dva artikla ne smeju imati isti naziv");
 		}
-		artikli.add(artikal);
 		if (artikli.contains(artikal))
 			throw new IllegalArgumentException("Duplikat artikla ne moze biti ubacen");
 		artikli.add(artikal);
@@ -40,5 +39,16 @@ public class Magacin implements MagacinInterfejs {
 		}
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		String rezultat = "Magacin:\n";
+		for(Artikal a: artikli) {
+			rezultat += a.toString() + "\n";
+		}
+		return rezultat;
+	}
+	
+	
 
 }
